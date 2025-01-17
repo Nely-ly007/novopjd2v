@@ -5,23 +5,36 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private Transform _transform;
-    public float velocidade = 1.0f;
+    public float velocidade = 10f;
     void Start()
     {
         _transform = gameObject.transform;
+        _rigidbody2d = gameObject.GetComponent<Rigidbody2D>();
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("chao")) //if (other.tag == chao)
+        {
+            noChao = false
+        }
+    }
+
+
 
     void Update()
     {
-        if(input.GetKey(KeyCode.LeftArrow))
+        if(Input.GetKey(KeyCode.LeftArrow))
         {
-            _transform.position=
-            Debug.Log("LeftArrow");
+            _transform.position -= new Vector3(x:velocidade*Time.deltaTime,y:0,z:0);
+            Debug.Log(message:"LeftArrow");
         }
 
-        if(input.GetKey(KeyCode.RightArrow))
+        if(Input.GetKey(KeyCode.RightArrow))
         {
-            Debug.Log("RightArrow");
+            _transform.position += new Vector3(x:velocidade*Time.deltaTime,y:0,z:0);
+            Debug.Log(message:"RightArrow");
         }
     }
 }
+
