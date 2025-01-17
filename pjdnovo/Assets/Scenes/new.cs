@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private Transform _transform;
-    public float velocidade = 1.0f
+    public float velocidade = 1.0f;
     void Start()
     {
         _transform = gameObject.transform;
